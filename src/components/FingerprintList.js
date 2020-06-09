@@ -18,7 +18,7 @@ class FingerprintList extends React.Component {
         }else{
             fingerprints = this.props.fingerprintList.map(fp => {
                 isHighlighted = false;
-                if (fp.size === 0) {
+                if (fp === null || fp.size === 0) {
                     return <div />
                 }
                 if (fp.start_time <= this.props.currentRuntime && fp.start_time + 4 > this.props.currentRuntime) {
