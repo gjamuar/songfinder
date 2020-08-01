@@ -2,6 +2,7 @@ import React from 'react'
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import ReactPlayer from 'react-player'
+import '../css/PlayerView.css'
 
 class PlayerView extends React.Component {
     shouldComponentUpdate(nextProps, nextState) {
@@ -35,11 +36,12 @@ class PlayerView extends React.Component {
             controls
             onSeek={(e) => console.log(e)}
             onProgress={(e) => this.props.highlightFingerprint(e.playedSeconds)}
+            className="playerview"
             />
         }else {
             player = <div/>;
         }
-        return (<div>{player}
+        return (<div className="playerbg" >{player}
             {/* <AudioPlayer
                 autoPlay
                 src={audiourl}
