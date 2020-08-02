@@ -4,10 +4,11 @@ import PlayerView from './PlayerView';
 import FingerprintList from './FingerprintList'
 import ApiService from '../api/ApiService'
 import io from 'socket.io-client';
+import SongList from './SongList';
 
 class App extends React.Component {
 
-    state = { fingerprints: [], audiofile: '', currentRuntime: 0,fetchInProgress: false, youtubeUrl:'' }
+    state = { fingerprints: [], audiofile: '', currentRuntime: 0,fetchInProgress: false, youtubeUrl:'', songlist:{} }
     onYoutubeSubmit = (youtubeUrl)=>{
         console.log('onYoutubeSubmit')
         console.log(youtubeUrl)
@@ -100,7 +101,18 @@ class App extends React.Component {
     appendFingerprint = (data, file,yurl) => {
         console.log(data);
         // console.log(socket.id);
-        this.setState({ fingerprints: [...this.state.fingerprints, JSON.parse(data)],audiofile: file,fetchInProgress: false ,youtubeUrl: yurl})
+        let copySonglist = {...this.state.songlist}
+        let song_data = JSON.parse(data);
+        console.log(song_data.song_id);
+        if(song_data.song_id){
+        if (! (song_data.song_id in this.state.songlist)){    
+            copySonglist[song_data.song_id] = {"song_name":song_data.song_name, "count":1};
+        }else{
+            copySonglist[song_data.song_id].count +=1;
+        }
+        }
+        console.log('songlist:'+ JSON.stringify(copySonglist))
+        this.setState({ fingerprints: [...this.state.fingerprints, song_data],audiofile: file,fetchInProgress: false ,youtubeUrl: yurl, songlist: copySonglist})
     }
 
     render() {
@@ -108,12 +120,21 @@ class App extends React.Component {
             <div className="ui container" style={{ marginTop: '10px' }}>
                 <SearchBar onSubmit={this.onSearchSubmit} onYoutubeSubmit={this.onYoutubeSubmit} />
                 <div><PlayerView audiofile={this.state.audiofile} highlightFingerprint={this.highlightFingerprint} youtubeUrl={this.state.youtubeUrl}/></div>
-                <div>
+                <div className="ui raised secondary inverted segment">
+                <div className="ui two column doubling stackable grid container">
+                <div className="column">
                     <FingerprintList
                         fetchInProgress={this.state.fetchInProgress} 
                         fingerprintList={this.state.fingerprints}
                         currentRuntime={this.state.currentRuntime}
                         seekPlayerToTime={this.props.seekPlayerToTime} />
+                </div>
+                <div className="column">
+                    <SongList 
+                        songList={this.state.songlist}
+                    />
+                </div>
+                </div>
                 </div>
             </div>
 
