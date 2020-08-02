@@ -4,3 +4,9 @@
 .playerbg {
     background-color: rgba(0,0,0,.15);
 }
+
+.rhap_container {
+    border-radius: 4px;
+    /* background: #274344; */
+    background: rgb(94 117 117);
+}
