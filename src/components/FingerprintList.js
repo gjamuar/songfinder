@@ -35,10 +35,25 @@ class FingerprintList extends React.Component {
         }
          
         return (
-            <div className="ui inverted segment fingerprint-list fingerprints">
-                <div className="ui inverted relaxed divided list">
-                    {fingerprints}
-                </div>
+            // <div className="ui inverted segment fingerprint-list fingerprints">
+            //     <div className="ui inverted relaxed divided list">
+            //         {fingerprints}
+            //     </div>
+            // </div>
+            <div className="fingerprints">
+            <table className="ui inverted celled table  fingerprint-list">
+            <thead>
+                <tr>
+                    <th>Song ID</th>
+                    <th>Song Name</th>
+                    <th>Start Time</th>
+                    <th>Confidence</th>
+                </tr>
+            </thead>
+            <tbody >
+                {fingerprints}
+            </tbody>
+            </table>
             </div>
         );
     }

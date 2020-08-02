@@ -20,17 +20,25 @@ class FingerprintItem extends React.Component {
         // const active = this.props.active;
 
         return (
-            <div className={this.props.isHighlighted?"item active":"item"}
-             ref={el => this.el = el}
-             onClick={this.seekPlayerToTime(start_time)}>
-                <div className="content">
-                    <div className="header">{song_name}</div>
-                    <div className="description">
-                    <span>Start time: {start_time}</span>
-                        <span className="right floated content">Confidence: {confidence}</span>
-                    </div>
-                </div>
-            </div>
+            // <div className={this.props.isHighlighted?"item active":"item"}
+            //  ref={el => this.el = el}
+            //  onClick={this.seekPlayerToTime(start_time)}>
+            //     <div className="content">
+            //         <div className="header">{song_name}</div>
+            //         <div className="description">
+            //         <span>Start time: {start_time}</span>
+            //             <span className="right floated content">Confidence: {confidence}</span>
+            //         </div>
+            //     </div>
+            // </div>
+            <tr className={this.props.isHighlighted?"item active":"item"}
+            ref={el => this.el = el}
+            onClick={this.seekPlayerToTime(start_time)}>
+                <td>{this.props.songId}</td>
+                <td>{song_name}</td>
+                <td>{start_time}</td>
+                <td>{confidence}</td>
+            </tr>
         );
     }
 }
