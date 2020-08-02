@@ -2,5 +2,5 @@
     margin: auto;
 }
 .playerbg {
-    background-color: currentColor;
+    background-color: rgba(0,0,0,.15);
 }

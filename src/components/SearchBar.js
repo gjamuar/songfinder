@@ -17,7 +17,7 @@ class SearchBar extends React.Component {
 
     render() {
         return (
-            <div className="ui segment">
+            <div className="ui segment" style={{   backgroundColor:'rgba(0,0,0,.15)' }}>
                 <form className="ui form" onSubmit={this.onFormSubmit}>
                     <div className="field">
                         <label>Youtube URL</label>

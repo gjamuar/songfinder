@@ -120,7 +120,7 @@ class App extends React.Component {
             <div className="ui container" style={{ marginTop: '10px' }}>
                 <SearchBar onSubmit={this.onSearchSubmit} onYoutubeSubmit={this.onYoutubeSubmit} />
                 <div><PlayerView audiofile={this.state.audiofile} highlightFingerprint={this.highlightFingerprint} youtubeUrl={this.state.youtubeUrl}/></div>
-                <div className="ui raised secondary inverted segment">
+                <div className="ui raised secondary inverted segment" style={{     backgroundColor: 'transparent' }}>
                 <div className="ui two column doubling stackable grid container">
                 <div className="column">
                     <FingerprintList
