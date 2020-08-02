@@ -70,7 +70,9 @@ class App extends React.Component {
     };
 
     getFingerprintBySocketIo = (filename, fileUrl, youtubeUrl) => {
-        var socket = io('http://localhost:5002');
+        // var socket = io('http://localhost:5002');
+        var socket = io('http://aurora.cs.rutgers.edu:5002');
+         console.log(socket.id);
         console.log(socket.id);
         // messages = document.createElement('ul');
         socket.on('connect', function () {
