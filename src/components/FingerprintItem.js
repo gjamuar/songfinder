@@ -16,7 +16,7 @@ class FingerprintItem extends React.Component {
       }
 
     render() {
-        const { song_name, confidence, start_time } = this.props.fingerprint;
+        const { song_id, song_name, confidence, start_time } = this.props.fingerprint;
         // const active = this.props.active;
 
         return (
@@ -34,7 +34,7 @@ class FingerprintItem extends React.Component {
             <tr className={this.props.isHighlighted?"item active":"item"}
             ref={el => this.el = el}
             onClick={this.seekPlayerToTime(start_time)}>
-                <td>{this.props.songId}</td>
+                <td>{song_id}</td>
                 <td>{song_name}</td>
                 <td>{start_time}</td>
                 <td>{confidence}</td>
