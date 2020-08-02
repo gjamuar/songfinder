@@ -34,7 +34,7 @@ class SearchBar extends React.Component {
                             files={this.state.files}
                             onChange={e => this.setState({ files: e.target.files })} />
                     </div>
-                    <button className="ui button" type='submit'>Submit</button>
+                    <button className="ui teal button" type='submit'>Submit</button>
 
                 </form>
             </div>
